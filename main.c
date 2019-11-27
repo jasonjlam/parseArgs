@@ -5,7 +5,8 @@
 #include "parse.h"
 
 int main() {
-    char args[30] = "Yes";
-    parse_args(args);
+    char line[30] = "ls -a -l";
+    char ** args = parse_args(line);
+    execvp(args[0], args);
     return 0;
 }

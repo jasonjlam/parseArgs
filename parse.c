@@ -4,15 +4,19 @@
 
 
 char ** parse_args( char * line ) {
-    char **args;
-    char *arg = strsep(&line," ");
+    char **args = calloc(sizeof(char *), 6);
+    char *s1 = line;
+    char *arg;
     int i = 0;
-    for (; arg!=NULL; i++) {
-        args[i] = arg;
-        arg = strsep(&line," ");
-        // printf("%s\n", args[i]);
+    for (i; i < 6; i++) {
+        if ((arg=strsep(&s1, " "))!= NULL) {
+            args[i] = malloc(sizeof(char[30]));
+            args[i] = arg;
+            printf("%s\n", args[i]);
+        }
+        else {
+            args[i] = NULL;
+        }
     }
-    i++;
-    args[i] = NULL;
     return args;
 }
